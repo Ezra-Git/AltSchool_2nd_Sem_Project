@@ -157,7 +157,7 @@ Python3: [Get Python](https://www.python.org/downloads/)
 <!-- License -->
 ## License
 
-Distributed under the MIT License. See <a href="https://github.com/Ezra-Git/AltSchool_2nd_Sem_Project/examblog/LICENSE">LICENSE</a> for more information.
+Distributed under the MIT License. See <a href="https://github.com/Ezra-Git/AltSchool_2nd_Sem_Project/blob/master/LICENSE.md">LICENSE</a> for more information.
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
