@@ -124,7 +124,7 @@ Python3: [Get Python](https://www.python.org/downloads/)
    ```
 2. Activate the virtual environment
    ```sh
-   source exam_venv/Scripts/activate
+   source examblog/scripts/activate
    ```
 3. Install project packages
    ```sh
@@ -132,7 +132,7 @@ Python3: [Get Python](https://www.python.org/downloads/)
    ```
 4. Run Flask
    ```sh
-   python app.py
+   flask run
    ```
 5. Open the link generated in the terminal on a browser
 
