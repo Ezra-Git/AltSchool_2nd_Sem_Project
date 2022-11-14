@@ -68,6 +68,15 @@
                                 </div>
                                 <br />
                                 <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Signup</button>
+                                 <!-- flash message -->
+                                    {% with messages = get_flashed_messages() %}
+                                    {% if messages %}
+                                    {% for message in messages %}
+                                        <h3 class="site-heading subheading" style="margin-top: 5%; color:aqua;">{{ message }}</h3>
+                                    {% endfor %}
+                                    {% endif %}
+                                    {% endwith %}
+                                <!-- end flash -->
                             </form>
                         </div>
                     </div>

@@ -46,6 +46,15 @@
                             <h1>The Ezra Blog</h1>
                             <span class="subheading">Extend your thoughts</span>
                         </div>
+                        <!-- flash message -->
+                            {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                            {% for message in messages %}
+                                <h3 class="site-heading subheading" style="margin-top: 5%; color:aqua;">{{ message }}</h3>
+                            {% endfor %}
+                            {% endif %}
+                            {% endwith %}
+                        <!-- end flash -->
                     </div>
                 </div>
             </div>
@@ -63,14 +72,16 @@
                             <a href="{{ url_for('post', post_id=post.id) }}"><h2 class="post-title">{{ post.title }}</h2></a>
                             <h3 class="post-subtitle">{{ post.subtitle }}</h3>
                             <p class="post-meta">
-                                Posted by {{ post.author.username }}
+                                Posted by {{ post.author }}
                                 on {{ post.date }}
                             </p>
                         </div>
                         <hr class="my-4" />
                     {% endfor %}
+                    {% if not current_user.is_authenticated %}
                         <h3>Don't have an account?</h3>
                         <span class="subheading"><a href="{{ url_for('signup') }}"><h4>Signup Now</h4></a></span>
+                    {% endif %}
                     <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
                 </div>
             </div>

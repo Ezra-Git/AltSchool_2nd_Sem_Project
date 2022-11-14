@@ -74,7 +74,7 @@ def about():
 # Route to show posts on the home screen
 @app.route('/post/<int:post_id>/')
 def post(post_id):
-    post = Article.query.get_or_404(id)
+    post = Article.query.get_or_404(post_id)
 
     context = {
         "post": post
@@ -91,7 +91,6 @@ def add():
         title = request.form.get('title')
         subtitle = request.form.get('subtitle')
         author = request.form.get('author')
-        # user = current_user
         show_date = dt.datetime.now()
         content = request.form.get('content')
 
@@ -107,12 +106,11 @@ def add():
             content = content,
             date = show_date.strftime('%B %d, %Y %I:%M%p')
         )
-        # it displays like November 06, 2022 11:51AM
 
         db.session.add(new_article)
         db.session.commit()
 
-        return redirect(url_for('add'))
+        return redirect(url_for('index'))
     return render_template('add.html')
 
 
@@ -130,10 +128,10 @@ def edit(id):
             db.session.commit()
 
             flash("Changes have been saved.")
-            return redirect(url_for('article', id=edit_post.id))
+            return redirect(url_for('index'))
 
         context = {
-            'article': edit_post
+            'post': edit_post
         }
 
         return render_template('edit.html', **context)
@@ -156,21 +154,7 @@ def delete(id):
 
     flash("Only post authors can delete posts.")
     return redirect(url_for('index'))
-
-# @app.route('/addpost', methods=['POST'])
-# def addpost():
-#     title = request.form.get('title')
-#     subtitle = request.form.get('subtile')
-#     author = request.form.get('author')
-#     content = request.form.get('content')
     
-#     addpost = Article(title=title, subtitle=subtitle, author=author, content=content, date_posted=datetime.now())
-
-#     db.session.add(addpost)
-#     db.session.commit()
-
-#     return redirect(url_for('index'))
-
 
 # Route for users to contact me
 @app.route('/contact', methods=['POST','GET'])

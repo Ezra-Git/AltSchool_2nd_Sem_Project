@@ -49,8 +49,10 @@
                             <span class="meta">
                                 Posted by {{ post.author }} on {{ post.date_posted.strftime('%B %d, %Y') }}
                             </span>
-                            <a class="btn btn-primary text-uppercase" href="/edit/{{post.id}}/">Update</a> 
-                            <a class="btn btn-primary text-uppercase" href="/delete/{{post.id}}/">Delete</a>
+                            {% if not current_user.id == post.user_id %}
+                                <a class="btn btn-primary text-uppercase" href="/edit/{{post.id}}/">Update</a> 
+                                <a class="btn btn-primary text-uppercase" href="/delete/{{post.id}}/">Delete</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -101,9 +103,7 @@
                 </div>
             </div>
         </footer>
-        <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
         <script src="{{ url_for('static', filename='scripts.js') }}"></script>
     </body>
 </html>
